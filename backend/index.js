@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-const corsOption = { origin: "http://localhost:3000", credentials: true };
+const corsOption = { origin: process.env.FRONTEND_URL, credentials: true };
 app.use(cors(corsOption));
 // Routes
 app.use("/api/v1/user", userRoute);
