@@ -31,8 +31,8 @@ function Login() {
       // console.log(res.data, "is object of user");
       dispatch(setAuthUser(res.data));
     } catch (error) {
-      toast.error(error.response.data.message);
-      console.log(error.message, error);
+      toast.error(error?.response?.data?.message);
+      console.log(error?.message, error);
     }
     // console.log(user);
     setUser({
