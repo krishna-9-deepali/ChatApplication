@@ -21,10 +21,6 @@ const corsOption = {
 };
 app.use(cors(corsOption));
 // Routes
-app.get(("/", (req, res) => {
-res.setHeader("Access-Control-Allow-Origin",process.env.FRONTEND_URL);
-res.setHeader("Access-Control-Allow-Credentials", "true");
-)
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
 
