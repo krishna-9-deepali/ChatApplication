@@ -12,7 +12,7 @@ function Login() {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  axios.defaults.withCredentials = true;
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
