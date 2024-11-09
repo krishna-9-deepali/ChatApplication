@@ -68,19 +68,30 @@ export const login = async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res
-      .status(200)
-      .cookie("token", token, {
-        maxAge: 1 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        sameSite: "strict",
-      })
-      .json({
+    // return res
+    //   .status(200)
+    //   .cookie("token", token, {
+    //     maxAge: 1 * 24 * 60 * 60 * 1000,
+    //     httpOnly: true,
+    //     sameSite: "strict",
+    //   })
+    //   .json({
+    //     _id: user._id,
+    //     username: user.username,
+    //     fullName: user.fullName,
+    //     profilePhoto: user.profilePhoto,
+    //   });
+    res.status(200).json({
+      success: true,
+      message: "Logged in successfully",
+      token,
+      user: {
         _id: user._id,
         username: user.username,
         fullName: user.fullName,
         profilePhoto: user.profilePhoto,
-      });
+      },
+    });
   } catch (error) {
     console.log(error);
   }

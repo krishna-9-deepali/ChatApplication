@@ -27,18 +27,25 @@ function Login() {
         }
       );
       dispatch(login());
+      dispatch(setAuthUser(res.data.user));
+      sessionStorage.setItem("token", JSON.stringify(res.data.token));
       navigate("/");
-      // console.log(res.data, "is object of user");
-      dispatch(setAuthUser(res.data));
+      console.log(
+        res.data,
+        res.data.user,
+        res.data.message,
+        "is object of user"
+      );
+      // dispatch(setAuthUser(res.data));
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
       console.log(error?.message, error);
     }
     // console.log(user);
-    setUser({
-      username: "",
-      password: "",
-    });
+    // setUser({
+    //   username: "",
+    //   password: "",
+    // });
   };
   return (
     <div className="min-w-96 mx-auto mt-40">

@@ -38,6 +38,7 @@ function Sidebar() {
       dispatch(setOnlineUsers(null));
       dispatch(setSearchUsers(null));
       dispatch(setIsSearch(null));
+      sessionStorage.removeItem("token");
     } catch (error) {
       console.log(error);
     }
