@@ -19,6 +19,8 @@ const isAuthenticated = async (req, res, next) => {
   try {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
+    console.log(token, ".......");
+
     if (!token) {
       return res.status(401).json({ message: "User not authenticated." });
     }
@@ -27,6 +29,8 @@ const isAuthenticated = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid token" });
     }
     req.id = decode.userId;
+    console.log(req.id, "req.id");
+
     next();
   } catch (error) {
     res.status(401).json({

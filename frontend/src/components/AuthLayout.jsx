@@ -10,18 +10,18 @@ export default function Protected({ children, authentication = true }) {
   console.log(authUser);
 
   useEffect(() => {
-    // if (authentication && authStatus !== authentication) {
-    //   navigate("/login", { replace: true });
-    //   // window.history.replaceState({}, "", "/login");
-    // } else if (!authentication && authStatus !== authentication) {
-    //   navigate("/", { replace: true });
-    //   // window.history.replaceState({}, "", "/");
-    // }
-    if (authentication && authStatus) {
-      navigate("/");
-    } else {
-      navigate("/login");
+    if (authentication && authStatus !== authentication) {
+      navigate("/login", { replace: true });
+      // window.history.replaceState({}, "", "/login");
+    } else if (!authentication && authStatus !== authentication) {
+      navigate("/", { replace: true });
+      // window.history.replaceState({}, "", "/");
     }
+    // if (authentication && authStatus) {
+    //   navigate("/");
+    // } else {
+    //   navigate("/login");
+    // }
     setLoader(false);
   }, [authStatus, navigate, authentication]);
 

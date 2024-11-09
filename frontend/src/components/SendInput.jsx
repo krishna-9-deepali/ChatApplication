@@ -12,13 +12,28 @@ function SendInput() {
     e.preventDefault();
     try {
       // axios.defaults.withCredentials = true;
+      const token = sessionStorage.getItem("token");
+      let parsedToken = "";
+      console.log(token);
+
+      if (!token) {
+        console.warn("No token found in sessionStorage.");
+        return;
+      }
+      if (token) {
+        parsedToken = JSON.parse(token);
+        console.log(parsedToken, "Parsed Token");
+      }
       const res = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/v1/message/send/${selectedUser?._id}`,
         { message },
         {
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${parsedToken}`,
+          },
 
-          withCredentials: true,
+          // withCredentials: true,
         }
       );
       // console.log(res, [...messages, res?.data?.newMessage]);
